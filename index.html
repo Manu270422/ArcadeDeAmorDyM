@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🎮 Arcade de Amor</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body data-page="index">
+  <!-- Música global (archivo local) -->
+  <audio id="bg-music" src="musica/melodia-romantica.mp3" loop preload="auto"></audio>
+
+  <header class="header">
+    <h1>🎮 Mini Arcade de Amor 💘</h1>
+    <div class="controls">
+      <div class="scoreboard">Puntaje: <span id="score-display">0</span></div>
+      <button id="music-toggle" class="small-btn" title="Activar / Desactivar música">🔈</button>
+      <button id="reset-progress" class="small-btn" title="Resetear progreso">♻️ Reset</button>
+    </div>
+  </header>
+
+  <main class="menu">
+    <p class="subtitle">Escoge un juego y demuestra cuánto me conoces 🥰</p>
+
+<div class="buttons-grid">
+  <a class="btn-arcade" href="juegos/ahorcado.html" data-game="ahorcado">
+    Ahorcado 💌 <span class="progress-badge" data-game="ahorcado">—</span>
+  </a>
+
+  <a class="btn-arcade" href="juegos/trivia.html" data-game="trivia">
+    Trivia de Nosotros 🤔 <span class="progress-badge" data-game="trivia">—</span>
+  </a>
+
+  <a class="btn-arcade" href="juegos/memoria.html" data-game="memoria">
+    Memoria 🧠 <span class="progress-badge" data-game="memoria">—</span>
+  </a>
+
+  <a class="btn-arcade" href="juegos/sorpresa.html" data-game="sorpresa">
+    Sorpresa 💖 <span class="progress-badge" data-game="sorpresa">—</span>
+  </a>
+</div>
+
+    <p class="hint">Juega y acumula puntos. Completa todos los juegos para desbloquear la sorpresa final 🎁</p>
+  </main>
+
+  <!-- contenedor para corazones flotantes/confetti -->
+  <div id="floating-container" aria-hidden="true"></div>
+
+  <script src="js/main.js"></script>
+  <script src="js/index-ui.js"></script>
+  <script src="js/ui-extras.js"></script>
+
+<!-- Modal de logros -->
+<div id="achievement-modal" class="achievement-modal" aria-hidden="true" role="dialog" aria-label="Logro desbloqueado">
+  <div class="achievement-card">
+    <button id="close-achievement" class="close-x" aria-label="Cerrar">✕</button>
+    <div id="ach-emoji" class="ach-emoji">🎉</div>
+    <h3 id="ach-title">Logro desbloqueado</h3>
+    <p id="ach-desc">Has completado algo especial</p>
+    <button id="ach-cta" class="small-btn">Volver al menú</button>
+  </div>
+</div>
+
+<!-- Contenedor secreto (galería / easter egg) -->
+<div id="secret-gallery" class="secret-gallery" aria-hidden="true">
+  <div class="secret-inner">
+    <button id="close-secret" class="close-x">✕</button>
+    <div id="secret-content">
+      <!-- Aquí puedes insertar imágenes o un video -->
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ahorcado del Amor 💌</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <style>
+    .ahorcado-container { 
+      text-align: center; 
+      margin-top: 40px; 
+    }
+    #palabra { 
+      font-size: 2rem; 
+      letter-spacing: 10px; 
+      margin: 20px 0; 
+      font-weight: 700; 
+    }
+    #letras button { 
+      margin: 4px; 
+      padding: 10px; 
+      font-size: 1rem; 
+      border-radius: 8px; 
+      border: 1px solid #ccc; 
+      cursor: pointer; 
+    }
+    #letras button:disabled { 
+      background: #ddd; 
+      cursor: not-allowed; 
+    }
+    #mensaje { 
+      margin-top: 20px; 
+      font-size: 1.2rem; 
+      font-weight: 700; 
+    }
+  </style>
+</head>
+<body data-page="ahorcado">
+  <main class="ahorcado-container">
+    <h2>Juego del Ahorcado 💕</h2>
+    <canvas id="canvas" width="200" height="200"></canvas>
+    <div id="palabra"></div>
+    <div id="letras"></div>
+    <div id="mensaje"></div>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/ahorcado.js"></script>
+</body>
+</html>
