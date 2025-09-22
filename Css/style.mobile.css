@@ -1,0 +1,21 @@
+/*  ------ Optimización móvil específica (≤700 px) ------ */
+@media(max-width:700px){
+  /* Caja generador (si la usas) */
+  .gen-box{
+    font-size:.8rem;
+    position:fixed;top:6px;left:50%;transform:translateX(-50%);
+    width:92vw;max-width:92vw;
+  }
+}
+
+/*  ------ Ajustes extra para ≤600 px ------ */
+@media(max-width:600px){
+  /* Ajustes de tamaño globales (ya están en style.css),
+     se duplicaron antes; aquí solo los recordamos
+     para evitar conflictos */
+  .max-w-md{max-width:90vw}
+  .w-64,.h-64{width:14rem;height:14rem}
+  .text-2xl{font-size:1.25rem}
+  .p-6{padding:1rem}
+  .mt-8{margin-top:1.5rem}.mb-8{margin-bottom:1.5rem}
+}
