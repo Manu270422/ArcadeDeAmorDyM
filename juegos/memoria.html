@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Memoria del Amor 🧠</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <style>
+    .grid { display:grid; grid-template-columns:repeat(4,80px); gap:10px; justify-content:center; margin-top:30px }
+    .card { width:80px; height:80px; background:#fff; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2); display:flex; align-items:center; justify-content:center; cursor:pointer; }
+    .card img { max-width:100%; max-height:100%; border-radius:6px; display:none; }
+    .card.flipped img { display:block; }
+  </style>
+</head>
+<body data-page="memoria">
+  <main>
+    <h2>Juego de Memoria 💖</h2>
+    <div id="grid" class="grid"></div>
+    <p id="mensaje"></p>
+  </main>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/memoria.js"></script>
+</body>
+</html>

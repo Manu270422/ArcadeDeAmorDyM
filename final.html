@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Final Secreto 💍</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    .final-card{ max-width:800px; margin:auto;padding:40px;border-radius:18px;background:linear-gradient(180deg,#fff,#fff9fb); text-align:center; box-shadow:0 20px 60px rgba(122,76,255,0.12)}
+    .final-card h1{ font-size:2rem; color:#972d7a}
+    .cta{ margin-top:22px; padding:14px 20px; border-radius:12px; background:linear-gradient(90deg,#ffd166,#ff6b9a); font-weight:800; color:#fff; border:none; cursor:pointer; }
+  </style>
+</head>
+<body data-page="final">
+  <main style="padding:60px 20px">
+    <div class="final-card">
+      <h1>🎉 ¡Sorpresa desbloqueada!</h1>
+      <p style="font-size:1.15rem;margin-top:12px">Completaste todos los juegos. Gracias por jugar — esto demuestra cuánto nos divertimos juntos. 💛</p>
+      <p style="margin-top:18px">Aquí va el momento especial:</p>
+
+      <div style="margin-top:18px;background:white;padding:20px;border-radius:12px;box-shadow:var(--shadow)">
+        <p style="font-weight:700">¿Quieres ser mi Player 2 para siempre?</p>
+        <p style="margin-top:8px">Si la respuesta es sí... tengo algo más preparado en persona 😉</p>
+      </div>
+
+      <button class="cta" onclick="location.href='index.html'">Volver al Menú</button>
+    </div>
+  </main>
+
+  <!-- Modal Galería Secreta -->
+  <div class="secret-gallery" id="secret-gallery" aria-hidden="true">
+    <div class="secret-inner">
+      <button class="close-x" id="close-secret">✖</button>
+      <div id="secret-content"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/ui-extras.js"></script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+/* estilos.css - base */
+:root{
+  --bg1: #fff7fb;
+  --bg2: #ffeef8;
+  --accent: #ff5a9e;
+  --accent-2: #7a4cff;
+  --soft: #f7cfe6;
+  --glass: rgba(255,255,255,0.7);
+  --shadow: 0 8px 30px rgba(0,0,0,0.12);
+  font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+
+  /* Fondo principal: tu foto */
+  background-image: url('../imagenes/foto7.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Capa rosada translúcida con desenfoque suave */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 192, 203, 0.35), rgba(255, 238, 248, 0.45));
+  backdrop-filter: blur(2.5px); /* 💞 el toque romántico */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Asegura que el contenido quede visible sobre el fondo */
+main, .menu, .header, .contenedor {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* header */
+.header{
+  position:fixed;
+  top:18px;
+  left:18px;
+  right:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  z-index:40;
+}
+.header h1{
+  font-size:1.25rem;
+  margin:0;
+  color:var(--accent-2);
+  text-shadow: 0 2px 8px rgba(122,76,255,0.12);
+}
+.controls{display:flex;gap:8px;align-items:center}
+.scoreboard{
+  background:var(--glass);
+  padding:8px 12px;
+  border-radius:12px;
+  box-shadow:var(--shadow);
+  font-weight:700;
+}
+.small-btn{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:white;border:none;padding:8px 10px;border-radius:10px;cursor:pointer;box-shadow:var(--shadow)
+}
+
+/* main menu */
+.menu{
+  text-align:center;
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  padding:80px 30px;
+}
+.subtitle{color:#6b2f5b;margin-top:6px;font-weight:600}
+.buttons-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:18px;
+  margin-top:28px;
+}
+.btn-arcade{
+  display:inline-block;
+  text-decoration:none;
+  padding:18px 14px;
+  border-radius:14px;
+  background: linear-gradient(180deg,#ff9ccf,#ff5a9e);
+  color:#fff;
+  font-weight:800;
+  font-size:1.05rem;
+  box-shadow: 0 14px 30px rgba(122,76,255,0.12), inset 0 -6px 20px rgba(0,0,0,0.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.btn-arcade:hover{ transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 50px rgba(122,76,255,0.16)}
+
+/* hearts floating */
+#floating-container{
+  position:fixed;
+  inset:auto 0 0 0;
+  pointer-events:none;
+  z-index:5;
+}
+.floating-heart{
+  position:fixed;
+  font-size:22px;
+  will-change: transform, opacity;
+  animation: floatUp 3s linear forwards;
+  opacity:0.95;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08));
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(.9); opacity:1; }
+  70% { transform: translateY(-160px) scale(1.05); opacity:0.9; }
+  100% { transform: translateY(-300px) scale(0.8); opacity:0 }
+}
+
+/* confetti pieces - small squares (used programmatically) */
+.confetti-piece{
+  position:fixed;
+  width:8px;height:8px;border-radius:2px;opacity:0.95;
+  will-change: transform, opacity;
+  animation: confettiFall 1400ms cubic-bezier(.2,.8,.2,1) forwards;
+}
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); opacity:1 }
+  100% { transform: translateY(420px) rotate(360deg); opacity:0 }
+}
+
+/* responsive tweaks for small screens */
+@media (max-width:520px){
+  .menu{padding:120px 16px}
+  .btn-arcade{font-size:.95rem;padding:14px}
+  .header{left:10px;right:10px}
+}
+
+/* --- progreso en botones y micro-animaciones --- */
+.btn-arcade { position: relative; display:flex; align-items:center; justify-content:center; gap:8px; }
+.progress-badge {
+  margin-left:8px;
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:0.8rem;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  min-width:36px;
+  text-align:center;
+  box-shadow: inset 0 -3px 6px rgba(0,0,0,0.06);
+}
+.progress-complete {
+  background: linear-gradient(90deg,#ffd166,#ff6b9a) !important;
+  color: #382a00;
+  font-weight:800;
+}
+.progress-locked {
+  background: rgba(255,255,255,0.08) !important;
+  color: #fff;
+  opacity:0.8;
+}
+.progress-new { background: rgba(255,255,255,0.12); color:#fff; }
+
+/* pequeño pulso cuando se completa */
+.badge-pulse {
+  animation: badgePulse 900ms ease;
+}
+@keyframes badgePulse {
+  0% { transform: scale(.9); filter:brightness(1.05); }
+  50% { transform: scale(1.12); filter:brightness(1.12); }
+  100% { transform: scale(1); filter:brightness(1); }
+}
+
+/* corazón pequeño que aparece al hacer click en botón */
+.icon-pop {
+  position:absolute;
+  pointer-events:none;
+  transform-origin:center;
+  animation: popUp 900ms cubic-bezier(.2,.9,.2,1) forwards;
+  font-size:18px;
+}
+@keyframes popUp {
+  0% { transform: translateY(0) scale(.6); opacity:1; }
+  60% { transform: translateY(-44px) scale(1.15); opacity:0.95; }
+  100% { transform: translateY(-90px) scale(.6); opacity:0; }
+}
+
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    color: red;
+    animation: floatUp 5s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0) scale(1); opacity: 1; }
+    to { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+/* Modal logro */
+.achievement-modal, .secret-gallery {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10,10,15,0.45);
+  z-index: 9999;
+}
+.achievement-modal[aria-hidden="false"],
+.secret-gallery[aria-hidden="false"] {
+  display: flex;
+}
+.achievement-card {
+  background: linear-gradient(180deg,#fff,#fff9fb);
+  border-radius: 14px;
+  padding: 22px;
+  width: min(520px,92%);
+  text-align:center;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+  transform: translateY(10px);
+  animation: popIn .28s cubic-bezier(.2,.9,.3,1) forwards;
+}
+@keyframes popIn { from { opacity:0; transform: translateY(24px) scale(.98);} to {opacity:1; transform: translateY(0) scale(1);} }
+.ach-emoji { font-size:44px; margin-bottom:8px; }
+.ach-emoji.big { font-size:64px; }
+.close-x { position:absolute; top:18px; right:18px; background:transparent; border:none; color:#444; font-size:18px; cursor:pointer; }
+.secret-gallery .secret-inner { width: min(900px,96%); max-height:88vh; background:white; border-radius:12px; overflow:auto; padding:14px; position:relative; box-shadow:0 30px 80px rgba(0,0,0,0.2); }
+.secret-gallery img { max-width:100%; display:block; margin:10px auto; border-radius:8px; }
+
+/* pequeña animación para el logo cuando se activa el easter egg */
+#arcade-logo.easter {
+  animation: logoShake .9s ease;
+}
+@keyframes logoShake {
+  0%{ transform: translateY(0) rotate(0); } 25%{ transform: translateY(-4px) rotate(-2deg);} 50%{ transform: translateY(2px) rotate(2deg);} 75%{ transform: translateY(-2px) rotate(-1deg);} 100%{ transform: translateY(0) rotate(0); }
+}
+
+/* Carrusel secreto */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  background: #fff;
+  margin: 16px auto;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+.carousel-slide {
+  min-width: 100%;
+  text-align: center;
+}
+.carousel-slide img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+.carousel-slide .caption {
+  padding: 10px;
+  font-size: 1rem;
+  color: #972d7a;
+  background: #fff9fb;
+  border-radius: 0 0 12px 12px;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,90,158,0.8);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+.carousel-btn:hover { background: rgba(122,76,255,0.9); }
